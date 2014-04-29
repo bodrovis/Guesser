@@ -2,7 +2,7 @@
 
 A deadly simple game for 1 or more players made for demonstration purposes. The computer "thinks of" a number and
 you're trying to guess it.
-A player who won (guessed) 3 times is considered a winner; he statistics is printed to a `txt` file.
+A player who won (guessed) 3 times is considered a winner; his statistics is printed to a `txt` file.
 
 Use
 
