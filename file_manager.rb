@@ -7,7 +7,7 @@ module FileManager
     end
 
     def write(*args)
-      file = File.new(@name, 'w+')
+      file = File.new(name, 'w+')
       file.write(args.join)
       file.close
     end

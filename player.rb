@@ -1,6 +1,7 @@
 module Guesser
   class Player
-    attr_accessor :wins, :name, :waiting_times
+    attr_reader :wins, :name, :waiting_times
+    attr_accessor :number_to_guess
 
     def initialize(name)
       @wins = 0
@@ -9,13 +10,11 @@ module Guesser
     end
 
     def show_player_statistics
-      "\n" +
-      "=" * 10 + "\n" +
-      "=== #{name} statistics:"  + "\n" +
-      "Wins: #{wins}"  + "\n" +
-       "Avg waiting time #{avg_waiting}s"  + "\n" +
-      "=" * 10 + "\n" +
-      "\n"
+      "\n" + "=" * 10 + "\n" +
+          "=== #{name} statistics:" + "\n" +
+          "Wins: #{wins}" + "\n" +
+          "Avg waiting time #{avg_waiting}" + "\n" +
+          "=" * 10 + "\n\n"
     end
 
     def guess
@@ -25,7 +24,8 @@ module Guesser
 
     def guessed
       puts "You've guessed!"
-      self.wins += 1
+      @number_to_guess = nil # Player guessed this number, a new one would be needed
+      @wins += 1
     end
 
     def won?
@@ -33,7 +33,11 @@ module Guesser
     end
 
     def avg_waiting
-      (waiting_times.inject(:+) || 0) / (waiting_times.count == 0 ? 1 : waiting_times.count)
+      begin
+        (waiting_times.inject(:+) || 0) / waiting_times.count
+      rescue ZeroDivisionError
+        "n/a"
+      end
     end
   end
 end

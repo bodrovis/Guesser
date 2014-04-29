@@ -5,36 +5,40 @@ require './file_manager.rb'
 module Guesser
   include FileManager
 
-  WINS_TO_GO = 1
+  WINS_TO_GO = 3
+  NUMBER_LIMIT = 10
 
   class Game
-    attr_reader :players, :winner, :secret_number
+    attr_reader :players, :winner
 
     def initialize
       @winner = nil
       puts '*' * 50
       puts 'Starting the game...'
       puts '*' * 50
-      initialize_players
 
+      initialize_players
+      play
+      show_winner
+      print_winner_to_file
+    end
+
+    def play
       until @winner do
-        @players.each do |p|
-          generate_secret_number(10)
-          p.waiting_times << measure_time {
-            p.guess == @secret_number.show ? p.guessed : puts("Fail... The number was #{@secret_number.show}")
+        @players.each do |player|
+          generate_secret_number_for player
+          player.waiting_times << measure_time {
+            player.guess == player.number_to_guess.show ? player.guessed : puts("Try again next turn!")
           }
 
-          if p.won?
-            @winner = p
+          if player.won?
+            @winner = player
             break
           end
         end
 
         show_players_statistics
       end
-
-      show_winner
-      print_winner_to_file
     end
 
     private
@@ -57,27 +61,24 @@ module Guesser
     end
 
     def show_players_statistics
-      @players.each {|p| puts p.show_player_statistics }
+      @players.each { |p| puts p.show_player_statistics }
     end
 
-    def generate_secret_number(limit)
+    def generate_secret_number_for(player)
       sleep 1
-      puts
-      puts 'Now generating a new number to guess...'
-      @secret_number = Generator.new(limit)
-      puts 'Done! Try to guess it!'
+      puts "\nPreparing a number to guess..."
+      player.number_to_guess ||= Generator.new(NUMBER_LIMIT)
     end
 
     def show_winner
-      puts
-      puts "=== We have a winner! ==="
+      puts "\n=== We have a winner! ==="
       puts "#{@winner.name} won the match!"
       puts "Thanks for playing and see you again soon!"
     end
 
     def print_winner_to_file
       writer = Writer.new('game')
-      writer.write("Player #{@winner.name} won (#{Time.now})!\n", @winner.show_player_statistics)
+      writer.write("Player #{@winner.name} won at #{Time.now}\n", @winner.show_player_statistics)
     end
 
     def measure_time
