@@ -20,8 +20,7 @@ module Guesser
 
     def guess
       puts "=== It's now #{name}'s turn. Enter your guess:"
-      guess = gets
-      guess.to_i
+      gets.to_i
     end
 
     def guessed
