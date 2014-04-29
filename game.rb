@@ -1,6 +1,6 @@
 require './player.rb'
 require './generator.rb'
-require './file_manager.rb'
+require './utils/file_manager.rb'
 
 module Guesser
   include FileManager
