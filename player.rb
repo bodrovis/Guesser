@@ -1,10 +1,10 @@
 module Guesser
   class Player
-    attr_reader :wins, :name, :waiting_times
+    attr_reader :points, :name, :waiting_times
     attr_accessor :number_to_guess
 
     def initialize(name)
-      @wins = 0
+      points = 0
       @name = name
       @waiting_times = []
     end
@@ -12,7 +12,7 @@ module Guesser
     def show_player_statistics
       "\n" + "=" * 10 + "\n" +
           "=== #{name} statistics:" + "\n" +
-          "Wins: #{wins}" + "\n" +
+          "Points: #{points}" + "\n" +
           "Avg waiting time #{avg_waiting}" + "\n" +
           "=" * 10 + "\n\n"
     end
@@ -25,11 +25,11 @@ module Guesser
     def guessed
       puts "You've guessed!"
       @number_to_guess = nil # Player guessed this number, a new one would be needed
-      @wins += 1
+      @points += 1
     end
 
     def won?
-      wins >= WINS_TO_GO
+      points >= POINTS_TO_GO
     end
 
     def avg_waiting
