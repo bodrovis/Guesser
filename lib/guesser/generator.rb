@@ -1,8 +1,8 @@
 module Guesser
-  attr_reader :secret_number
-
   class Generator
-    def initialize(limit)
+    attr_reader :secret_number
+
+    def initialize(limit = 10)
       @secret_number = rand(limit)
     end
   end

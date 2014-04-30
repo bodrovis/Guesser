@@ -4,7 +4,7 @@ module Guesser
     attr_accessor :number_to_guess
 
     def initialize(name)
-      points = 0
+      @points = 0
       @name = name
       @waiting_times = []
     end
@@ -18,18 +18,16 @@ module Guesser
     end
 
     def guess
-      puts "=== It's now #{name}'s turn. Enter your guess:"
       gets.to_i
     end
 
     def guessed
-      puts "You've guessed!"
       @number_to_guess = nil # Player guessed this number, a new one would be needed
       @points += 1
     end
 
     def won?
-      points >= POINTS_TO_GO
+      self.points >= POINTS_TO_GO
     end
 
     def avg_waiting
