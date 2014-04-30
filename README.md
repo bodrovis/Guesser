@@ -4,10 +4,16 @@ A deadly simple game for 1 or more players made for demonstration purposes. The 
 you're trying to guess it.
 A player who first guessed 3 times is considered a winner; his statistics is printed to a `txt` file.
 
-Use
+For nix systems use
 
-```ruby
-ruby starter.rb
+```
+bin/guesser
+```
+
+to launch the game. For Windows use
+
+```
+bin/guesser.bat
 ```
 
 (c) 2014 Ilya Bodrov
