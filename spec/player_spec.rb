@@ -5,11 +5,11 @@ module Guesser
     let(:player) {Player.new('test_player')}
 
     it "should have zero points by default" do
-      player.points.should eq(0)
+      expect(player.points).to eq(0)
     end
 
     it "should have no waiting times" do
-      player.waiting_times.should be_empty
+      expect(player.waiting_times).to be_empty
     end
 
     it "should increment player's points when guessed" do
@@ -17,20 +17,20 @@ module Guesser
     end
 
     it "should say when the player won the game" do
-      player.stub(:points).and_return(POINTS_TO_GO - 1)
-      player.won?.should be_false
-      player.stub(:points).and_return(POINTS_TO_GO)
-      player.won?.should be_true
+      allow(player).to receive(:points).and_return(POINTS_TO_GO - 1)
+      expect(player.won?).to be_falsy
+      allow(player).to receive(:points).and_return(POINTS_TO_GO)
+      expect(player.won?).to be_truthy
     end
 
     it "should count average waiting time properly" do
-      player.stub(:waiting_times).and_return([2, 2, 2, 2])
-      player.avg_waiting.should eq(2)
+      allow(player).to receive(:waiting_times).and_return([2, 2, 2, 2])
+      expect(player.avg_waiting).to eq(2)
     end
 
     it "should return not available when waiting times available" do
-      player.stub(:waiting_times).and_return([])
-      player.avg_waiting.should eq("n/a")
+      allow(player).to receive(:waiting_times).and_return([])
+      expect(player.avg_waiting).to eq("n/a")
     end
   end
 end
