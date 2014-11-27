@@ -18,7 +18,7 @@ module Guesser
     end
 
     def guess
-      gets.to_i
+      $stdin.gets.to_i
     end
 
     def guessed
@@ -26,8 +26,8 @@ module Guesser
       @points += 1
     end
 
-    def won?
-      self.points >= POINTS_TO_GO
+    def won?(game)
+      self.points >= game.options[:points]
     end
 
     def avg_waiting
