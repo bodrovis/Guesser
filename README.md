@@ -1,8 +1,8 @@
 # Guesser
 
-A deadly simple game for 1 or more players made for demonstration purposes. The computer "thinks of" a number and
+A dead simple game for 1 or more players made for demonstration purposes. The computer "thinks of" a number and
 you're trying to guess it.
-A player who first guessed 3 times is considered a winner; his statistics is printed to a `txt` file.
+A player who first guessed 3 times (adjustable) is considered a winner; his statistics is printed to a `txt` file.
 
 For nix systems use
 
@@ -16,4 +16,4 @@ to launch the game. For Windows use
 bin/guesser.bat
 ```
 
-(c) 2014 Ilya Bodrov
+(c) 2014 [Ilya Bodrov](http://radiant-wind.com)
