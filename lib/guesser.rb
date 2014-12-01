@@ -1,5 +1,6 @@
 require 'pry'
 require 'yaml'
+require 'slop'
 require 'guesser/game'
 require 'guesser/player'
 require 'guesser/generator'

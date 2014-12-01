@@ -1,5 +1,3 @@
-require 'slop'
-
 module Guesser
   module Configuration
     def parse_args(argv)
