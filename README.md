@@ -23,4 +23,15 @@ Available options:
 then the generated number will lie in the [0, 5] range. Should be an integer and cannot be less than 1.
 * `-p`, `--players` - how many players will participate. Should be an integer and cannot be less than 1.
 
+If none or some of the options are not provided the default configuration (for the absent params) is used. It is provided
+in the `config.yml` file in the following format:
+
+```yaml
+POINTS_TO_GO: 3
+NUMBER_LIMIT: 10
+PLAYERS: 2
+```
+
+so you may tweak it the way you like.
+
 (c) 2014 [Ilya Bodrov](http://radiant-wind.com)

@@ -18,9 +18,9 @@ module Guesser
     end
 
     it "should say when the player won the game" do
-      allow(player).to receive(:points).and_return(POINTS_TO_GO - 1)
+      allow(player).to receive(:points).and_return(CONFIG[:POINTS_TO_GO] - 1)
       expect(player.won?(game)).to be_falsy
-      allow(player).to receive(:points).and_return(POINTS_TO_GO)
+      allow(player).to receive(:points).and_return(CONFIG[:POINTS_TO_GO])
       expect(player.won?(game)).to be_truthy
     end
 
