@@ -27,12 +27,12 @@ If none or some of the options are not provided the default configuration (for t
 in the `config.yml` file in the following format:
 
 ```yaml
-POINTS_TO_GO: 3
-NUMBER_LIMIT: 10
-PLAYERS: 2
+points: 3
+limit: 10
+players: 2
 ```
 
-so you may tweak it the way you like.
+so you may tweak it the way you like. Please note that those values cannot be less than 1.
 
 ## License
 
