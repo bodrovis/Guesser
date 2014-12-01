@@ -37,7 +37,11 @@ module Guesser
     private
 
     def defaults
-      {points: CONFIG[:POINTS_TO_GO].to_i, limit: CONFIG[:NUMBER_LIMIT].to_i, players: CONFIG[:PLAYERS].to_i}
+      {
+          points: Integer(CONFIG[:POINTS_TO_GO]),
+          limit: Integer(CONFIG[:NUMBER_LIMIT]),
+          players: Integer(CONFIG[:PLAYERS])
+      }
     end
 
     def normalize!(opts)
