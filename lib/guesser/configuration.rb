@@ -25,23 +25,34 @@ module Guesser
       begin
         yaml_conf = YAML.load(File.open(config_file))
         yaml_conf.each do |k, v|
-          CONFIG[k.to_sym] = v
+          value = Integer(v)
+          raise RangeError, "[ERROR] The provided value #{value} for the #{k} setting is incorrect." if value < 1
+          CONFIG[k.to_sym] = value
         end
       rescue Errno::ENOENT
         abort "[ERROR] config.yml file does not exist! This means that the default options could not be loaded. Please create refer to the documentation for more information."
       rescue NoMethodError
         abort "[ERROR] config.yml file appears to be empty! This means that the default options could not be loaded. Please create refer to the documentation for more information."
+      rescue RangeError => e
+        abort e.message
       end
     end
 
     private
 
     def defaults
-      {
-          points: Integer(CONFIG[:POINTS_TO_GO]),
-          limit: Integer(CONFIG[:NUMBER_LIMIT]),
-          players: Integer(CONFIG[:PLAYERS])
-      }
+      begin
+        opts = {}
+        [:points, :limit, :players].each do |k|
+          opts.merge!(Hash[k, CONFIG.fetch(k) do
+                             raise KeyError, "[ERROR] #{k} setting is not provided in the config.yml file!"
+                           end
+                     ])
+        end
+        opts
+      rescue KeyError => e
+        abort e.message
+      end
     end
 
     def normalize!(opts)

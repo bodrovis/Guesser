@@ -7,10 +7,15 @@ module Guesser
         @name = generate_file_name(suffix)
       end
 
-      def write(*args)
+      def <<(*args)
         file = File.new(name, 'w+')
-        file.write(args.join)
-        file.close
+        begin
+          file.write(args.join)
+        rescue StandardError => e
+          puts e.message
+        ensure
+          file.close
+        end
       end
 
       private

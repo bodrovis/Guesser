@@ -8,8 +8,8 @@ require 'guesser/configuration'
 require 'guesser/utils/file_manager'
 
 module Guesser
-  extend FileManager
-  extend Configuration
+  include Guesser::FileManager
+  extend Guesser::Configuration
 
   load_defaults!
 end
