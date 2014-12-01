@@ -36,6 +36,6 @@ so you may tweak it the way you like.
 
 ## License
 
-Licensed under the [MIT License](https://github.com/bodrovis/Guesser/blob/master/LICENSE.txt).
+Licensed under the [MIT License](https://github.com/bodrovis/Guesser/blob/master/LICENSE).
 
 Copyright (c) 2014 [Ilya Bodrov](http://radiant-wind.com)
