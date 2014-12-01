@@ -20,7 +20,7 @@ Available options:
 
 * `-o`, `--points` - how many points should players get to win the game. Should be an integer and cannot be less than 1.
 * `-i`, `--limit` - the upper limit for a number to guess (the lower limit is 0). For example, if `5` is provided,
-then the generated number will lie in the [0, 5] range. Should be an integer and cannot be less than 1.
+then the generated number will lie in the [0, 4] range. Should be an integer and cannot be less than 1.
 * `-p`, `--players` - how many players will participate. Should be an integer and cannot be less than 1.
 
 If none or some of the options are not provided the default configuration (for the absent params) is used. It is provided
@@ -34,4 +34,8 @@ PLAYERS: 2
 
 so you may tweak it the way you like.
 
-(c) 2014 [Ilya Bodrov](http://radiant-wind.com)
+## License
+
+Licensed under the [MIT License](https://github.com/bodrovis/Guesser/blob/master/LICENSE.txt).
+
+Copyright (c) 2014 [Ilya Bodrov](http://radiant-wind.com)
