@@ -14,7 +14,7 @@ module Guesser
     end
 
     it "should increment player's points when guessed" do
-      expect { player.guessed }.to change {player.points}.by(1)
+      expect { player.guessed! }.to change {player.points}.by(1)
     end
 
     it "should say when the player won the game" do

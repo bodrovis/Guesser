@@ -21,7 +21,11 @@ module Guesser
       $stdin.gets.to_i
     end
 
-    def guessed
+    def guessed?
+      guess == number_to_guess
+    end
+
+    def guessed!
       self.number_to_guess = nil # Player guessed this number, a new one would be needed
       self.points += 1
     end
@@ -36,6 +40,10 @@ module Guesser
       rescue ZeroDivisionError
         "n/a"
       end
+    end
+
+    def generate_number_to_guess!(limit)
+      self.number_to_guess = rand(limit)
     end
   end
 end

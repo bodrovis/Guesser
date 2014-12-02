@@ -3,7 +3,6 @@ require 'yaml'
 require 'slop'
 require 'guesser/game'
 require 'guesser/player'
-require 'guesser/generator'
 require 'guesser/game_options'
 require 'guesser/utils/file_manager'
 

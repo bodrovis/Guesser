@@ -25,9 +25,9 @@ module Guesser
           generate_secret_number_for player
           player.waiting_times << measure_time do
             output.puts "Enter your guess:"
-            if player.guess == player.number_to_guess.secret_number
+            if player.guessed?
               output.puts "You've guessed!"
-              player.guessed
+              player.guessed!
             else
               output.puts("Wrong! Try again next end turn!")
             end
@@ -67,7 +67,8 @@ module Guesser
     def generate_secret_number_for(player)
       unless player.number_to_guess
         puts "Preparing a number to guess..."
-        player.number_to_guess = Generator.new(options.limit)
+        player.generate_number_to_guess!(options.limit)
+        #player.number_to_guess = Generator.new(options.limit)
       end
     end
 
