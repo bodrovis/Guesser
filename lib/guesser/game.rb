@@ -68,7 +68,6 @@ module Guesser
       unless player.number_to_guess
         puts "Preparing a number to guess..."
         player.generate_number_to_guess!(options.limit)
-        #player.number_to_guess = Generator.new(options.limit)
       end
     end
 
