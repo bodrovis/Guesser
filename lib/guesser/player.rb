@@ -1,7 +1,7 @@
 module Guesser
   class Player
-    attr_reader :points, :name, :waiting_times
-    attr_accessor :number_to_guess
+    attr_reader :name
+    attr_accessor :number_to_guess, :points, :waiting_times
 
     def initialize(name)
       @points = 0
@@ -22,12 +22,12 @@ module Guesser
     end
 
     def guessed
-      @number_to_guess = nil # Player guessed this number, a new one would be needed
-      @points += 1
+      self.number_to_guess = nil # Player guessed this number, a new one would be needed
+      self.points += 1
     end
 
     def won?(game)
-      self.points >= game.options[:points]
+      points >= game.options.points
     end
 
     def avg_waiting
