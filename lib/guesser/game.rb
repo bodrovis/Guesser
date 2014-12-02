@@ -76,7 +76,7 @@ module Guesser
 
     def print_winner_to_file
       writer = FileManager::Writer.new('game')
-      writer << ["Player #{@winner.name} won at #{Time.now}\n", @winner.show_player_statistics].join
+      writer << ["Player #{@winner.name} won at #{Time.now}\n", @winner.show_player_statistics]
     end
 
     def measure_time
