@@ -5,8 +5,6 @@ module Guesser
 
     def initialize(output, argv)
       @output, @options, @players = output, GameOptions.new(argv), []
-
-      binding.pry
     end
 
     def start
@@ -22,9 +20,11 @@ module Guesser
     def play
       until winner do
         players.each do |player|
+          sleep 1
+          output.puts "\n=== It's now #{player.name}'s turn."
           generate_secret_number_for player
           player.waiting_times << measure_time do
-            output.puts "=== It's now #{player.name}'s turn. Enter your guess:"
+            output.puts "Enter your guess:"
             if player.guess == player.number_to_guess.secret_number
               output.puts "You've guessed!"
               player.guessed
@@ -65,9 +65,10 @@ module Guesser
     end
 
     def generate_secret_number_for(player)
-      sleep 1
-      puts "\nPreparing a number to guess..."
-      player.number_to_guess ||= Generator.new(options.limit)
+      unless player.number_to_guess
+        puts "Preparing a number to guess..."
+        player.number_to_guess = Generator.new(options.limit)
+      end
     end
 
     def show_winner
