@@ -29,8 +29,8 @@ module Guesser
 
         normalize! options
       rescue Slop::Error => e
-        puts e.message
-        puts "[WARNING] Using default options. Provide --help to view info about available options."
+        warn e.message
+        warn "[WARNING] Using default options. Provide --help to view info about available options."
         defaults
       end
     end

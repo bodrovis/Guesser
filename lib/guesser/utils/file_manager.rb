@@ -12,7 +12,7 @@ module Guesser
         begin
           file.write(args.join)
         rescue StandardError => e
-          puts e.message
+          warn e.message
         ensure
           file.close
         end
