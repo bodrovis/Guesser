@@ -1,7 +1,5 @@
 module Guesser
   class GameOptions
-    AVAILABLE_OPTIONS = [:points, :limit, :players]
-
     def initialize(argv)
       parse_args(argv).each do |k, v|
         # attr_accessor for each possible option
@@ -36,18 +34,7 @@ module Guesser
     end
 
     def defaults
-      begin
-        opts = {}
-        AVAILABLE_OPTIONS.each do |k|
-          opts.merge!(Hash[k, CONFIG.fetch(k) do
-                              raise KeyError, "[ERROR] #{k} setting is not provided in the config.yml file!"
-                            end
-                      ])
-        end
-        opts
-      rescue KeyError => e
-        abort e.message
-      end
+      CONFIG
     end
 
     def normalize!(opts)
