@@ -35,15 +35,13 @@ module Guesser
     end
 
     def avg_waiting
-      begin
-        (waiting_times.inject(:+) || 0) / waiting_times.count
-      rescue ZeroDivisionError
-        "n/a"
-      end
+      (waiting_times.inject(:+) || 0) / waiting_times.count
+    rescue ZeroDivisionError
+      "n/a"
     end
 
     def generate_number_to_guess!(limit)
-      self.number_to_guess = rand(limit)
+      self.number_to_guess = rand(limit) unless self.number_to_guess
     end
   end
 end

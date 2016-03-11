@@ -1,0 +1,4 @@
+empty_config: "[ERROR] config.yml file appears to be empty! This means that the default options could not be loaded. Please create refer to the documentation for more information."
+key_not_found: "[ERROR] {{key}} setting is not provided in the config.yml file!"
+value_incorrect: "[ERROR] The provided value {{value}} for the {{key}} setting is incorrect."
+file_not_found: "[ERROR] config.yml file does not exist! This means that the default options could not be loaded. Please create refer to the documentation for more information."

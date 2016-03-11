@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
 
 gem 'rspec'
-gem 'pry'
 gem 'slop'
+gem 'messages_dictionary', path: 'F:\rails\my\messages_dictionary'

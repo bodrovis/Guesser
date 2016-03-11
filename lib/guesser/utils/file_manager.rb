@@ -9,13 +9,11 @@ module Guesser
 
       def <<(*args)
         file = File.new(name, 'w+')
-        begin
-          file.write(args.join)
-        rescue StandardError => e
-          warn e.message
-        ensure
-          file.close
-        end
+        file.write(args.join)
+      rescue StandardError => e
+        warn e.message
+      ensure
+        file.close
       end
 
       private
