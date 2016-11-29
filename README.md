@@ -41,4 +41,4 @@ so you may tweak it the way you like. Please note that those values cannot be le
 
 Licensed under the [MIT License](https://github.com/bodrovis/Guesser/blob/master/LICENSE).
 
-Copyright (c) 2014 [Ilya Bodrov](http://radiant-wind.com)
+Copyright (c) 2016 [Ilya Bodrov](http://bodrovis.tech)
